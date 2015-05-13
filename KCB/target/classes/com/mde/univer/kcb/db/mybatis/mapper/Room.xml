@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="Room">
+
+    <resultMap id="result" type="Room">
+        <result property="id" column="id"/>
+        <result property="surname" column="surname"/>
+        <result property="roomname" column="roomname"/>
+        <result property="patronymic" column="patronymic"/>
+        <result property="pass" column="pass"/>
+    </resultMap>
+ 
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM rooms;
+    </select>
+    
+ 	<select id="selectById" parameterType="int" resultMap="result">
+        SELECT * FROM rooms WHERE id = #{id}
+    </select>
+<!--     
+ 	<insert id="insert" parameterType="Room" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO rooms (name) VALUES (#{name});
+    </insert>
+ -->    
+    <update id="update" parameterType="Room">
+        UPDATE rooms
+        SET name = #{surname}
+        WHERE id = #{id} 
+  	</update>
+ 
+	<delete id="delete" parameterType="int">
+        DELETE from rooms WHERE id = #{id}
+    </delete>
+</mapper>

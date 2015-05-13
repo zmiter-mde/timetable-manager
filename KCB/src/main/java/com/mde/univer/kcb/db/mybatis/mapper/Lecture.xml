@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="Lecture">
+
+    <resultMap id="result" type="Lecture">
+        <result property="id" column="id"/>
+        <result property="number" column="number"/>
+        <result property="dayOfWeek" column="day_of_week"/>
+    </resultMap>
+ 
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM lectures;
+    </select>
+    
+ 	<select id="selectById" parameterType="int" resultMap="result">
+        SELECT * FROM lectures WHERE id = #{id}
+    </select>
+<!--     
+ 	<insert id="insert" parameterType="Lecture" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO lectures (name) VALUES (#{name});
+    </insert>
+ -->    
+    <update id="update" parameterType="Lecture">
+        UPDATE lectures
+        SET name = #{surname}
+        WHERE id = #{id} 
+  	</update>
+ 
+	<delete id="delete" parameterType="int">
+        DELETE from lectures WHERE id = #{id}
+    </delete>
+</mapper>

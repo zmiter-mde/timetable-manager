@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+<configuration>
+    <typeAliases>
+        <typeAlias alias="User" type="com.mde.univer.kcb.db.vo.User"/>
+        <typeAlias alias="Lecture" type="com.mde.univer.kcb.db.vo.Lecture"/>
+        <typeAlias alias="Lesson" type="com.mde.univer.kcb.db.vo.Lesson"/>
+        <typeAlias alias="Room" type="com.mde.univer.kcb.db.vo.Room"/>
+        <typeAlias alias="StudentGroup" type="com.mde.univer.kcb.db.vo.StudentGroup"/>
+        <typeAlias alias="Subject" type="com.mde.univer.kcb.db.vo.Subject"/>
+        <typeAlias alias="Tutor" type="com.mde.univer.kcb.db.vo.Tutor"/>     
+        <typeAlias alias="Timetable" type="com.mde.univer.kcb.db.vo.Timetable"/>     
+    </typeAliases>
+ 
+    <environments default="development">
+        <environment id="development">
+          <transactionManager type="JDBC"/>
+            <!--  connecting to Local MySql -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/diplom"/>
+                <property name="username" value="root"/>
+                <property name="password" value="zaqwsx123"/>
+            </dataSource>
+       </environment>
+    </environments>
+    <mappers>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/User.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/Lecture.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/Lesson.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/Room.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/StudentGroup.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/Subject.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/Tutor.xml"/>
+       <mapper resource="com/mde/univer/kcb/db/mybatis/mapper/Timetable.xml"/>
+    </mappers>
+</configuration>

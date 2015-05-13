@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="Subject">
+
+    <resultMap id="result" type="Subject">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="needPc" column="need_pc"/>
+        <result property="needLab" column="need_lab"/>
+    </resultMap>
+ 
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM subjects;
+    </select>
+    
+ 	<select id="selectById" parameterType="int" resultMap="result">
+        SELECT * FROM subjects WHERE id = #{id}
+    </select>
+<!--     
+ 	<insert id="insert" parameterType="Subject" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO subjects (name) VALUES (#{name});
+    </insert>
+ -->    
+    <update id="update" parameterType="Subject">
+        UPDATE subjects
+        SET name = #{surname}
+        WHERE id = #{id} 
+  	</update>
+ 
+	<delete id="delete" parameterType="int">
+        DELETE from subjects WHERE id = #{id}
+    </delete>
+</mapper>

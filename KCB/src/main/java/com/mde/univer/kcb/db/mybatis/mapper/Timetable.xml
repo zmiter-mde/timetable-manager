@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="Timetable">
+    <resultMap id="result" type="Timetable">
+        <result property="id" column="id"/>
+        <result property="group" column="group"/>
+        <result property="room" column="room"/>
+        <result property="floor" column="floor"/>
+        <result property="name" column="name"/>
+        <result property="surname" column="surname"/>
+        <result property="patronymic" column="patronymic"/>
+        <result property="title" column="pass"/>
+        <result property="lectureNumber" column="lectureNumber"/>
+        <result property="day" column="day"/>
+        <result property="faculty" column="faculty"/>
+    </resultMap>
+ 
+    <select id="selectAll" resultMap="result">
+        SELECT * FROM timetable;
+    </select>
+    
+ 	<select id="selectById" parameterType="int" resultMap="result">
+        SELECT * FROM timetable WHERE id = #{id}
+    </select>
+<!--     
+ 	<insert id="insert" parameterType="Timetable" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO timetable (name) VALUES (#{name});
+    </insert>
+ -->    
+    <update id="update" parameterType="Timetable">
+        UPDATE timetable
+        SET name = #{surname}
+        WHERE id = #{id} 
+  	</update>
+ 
+	<delete id="delete" parameterType="int">
+        DELETE from timetable WHERE id = #{id}
+    </delete>
+</mapper>
